@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVA — Sistema de Inversiones</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="setup-screen" class="setup-screen">
+  <div class="setup-card">
+    <div class="logo-big">E<span>V</span>A</div>
+    <p class="setup-sub">Sistema de Control de Inversiones</p>
+    <div class="setup-form">
+      <label>URL de tu Google Apps Script</label>
+      <input type="text" id="script-url" placeholder="https://script.google.com/macros/s/...">
+      <p class="setup-hint">Pega la URL de tu Apps Script. Solo necesitas hacerlo una vez.</p>
+      <button class="btn-big-green" onclick="saveScriptUrl()">Conectar con Google Sheets</button>
+      <button class="btn-demo" onclick="loadDemo()">Usar datos de demostración</button>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">E<span>V</span>A</div>
+    <div class="sidebar-fx" id="nav-fx">USD/MXN: —</div>
+    <nav class="sidebar-nav">
+      <button class="nav-item active" onclick="showPage('dashboard')" data-page="dashboard">
+        <i class="icon">⬛</i> Dashboard
+      </button>
+      <button class="nav-item" onclick="showPage('capital')" data-page="capital">
+        <i class="icon">💰</i> Capital
+      </button>
+      <button class="nav-item" onclick="showPage('posiciones')" data-page="posiciones">
+        <i class="icon">📂</i> Posiciones
+      </button>
+      <button class="nav-item" onclick="showPage('trades')" data-page="trades">
+        <i class="icon">📋</i> Trades
+      </button>
+      <button class="nav-item" onclick="showPage('plan-acciones')" data-page="plan-acciones">
+        <i class="icon">📈</i> Plan Acciones
+      </button>
+      <button class="nav-item" onclick="showPage('plan-opciones')" data-page="plan-opciones">
+        <i class="icon">🎯</i> Plan Opciones
+      </button>
+      <button class="nav-item" onclick="showPage('socios')" data-page="socios">
+        <i class="icon">👥</i> Socios
+      </button>
+      <button class="nav-item" onclick="showPage('watchlist')" data-page="watchlist">
+        <i class="icon">👁</i> Watchlist
+      </button>
+      <button class="nav-item" onclick="showPage('reportes')" data-page="reportes">
+        <i class="icon">📄</i> Reportes
+      </button>
+    </nav>
+    <button class="sidebar-settings" onclick="showSetup()">⚙ Configuración</button>
+  </nav>
+
+  <div class="main-content">
+    <header class="top-header">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <span class="page-title" id="page-title">Dashboard</span>
+      <div class="header-right">
+        <span class="fx-badge" id="header-fx">USD/MXN —</span>
+        <span class="date-badge" id="header-date"></span>
+        <button class="sync-btn" onclick="syncAll()" title="Sincronizar con Google Sheets">↻</button>
+      </div>
+    </header>
+
+    <div class="page-content" id="page-content"></div>
+  </div>
+
+</div>
+
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="app.js?v=2"></script>
+</body>
+</html>
