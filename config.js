@@ -9,6 +9,6 @@
 // ============================================================
 
 window.EVA_CONFIG = {
-  API_URL: '',
-  ACCESS_TOKEN: ''
+  API_URL: 'https://script.google.com/macros/s/AKfycbw-LNHVOsqr8Lk6ZNPvluGw7Z7hMsyJcD9hbybiP3_7LRNRwHMIqyQid_vTwxHuaAc-/exec',
+  ACCESS_TOKEN: '1234@1202'
 };
